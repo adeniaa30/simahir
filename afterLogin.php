@@ -37,7 +37,7 @@ if( isset($_SESSION["login"]) === false ) {
                 background-color: violet;
             }
             table{
-                width: 100%;
+                width: 50%;
                 border-collapse: collapse;
                 margin: auto;
                 border-radius: 15px;
@@ -143,13 +143,20 @@ if( isset($_SESSION["login"]) === false ) {
                                 <a href="#fact" class="nav-item nav-link">fact</a>
                                 <a href="#team" class="nav-item nav-link">Team</a>
                                 <a href="#tips" class="nav-item nav-link">Tips</a>
-                                <a href="paket.php" class="nav-item nav-link">Package</a>
-                                <a href="#contact" class="nav-item nav-link">Contact</a>
+																<a href="#jenisPaket" class="nav-item nav-link">Paket Mahir</a>
                             </div>
+
                             <div class="ml-auto">
                                 <a class="btn" href="registrasi/registrasi.php">Hai, <?php echo $_SESSION["username"]; ?> </a>
-                                <a class="btn" href="signout.php">Logout</a>
                             </div>
+														<div class="nav-item dropdown">
+																<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
+																<div class="dropdown-menu">
+																		<a href="#" class="dropdown-item">My Profile</a>
+																		<a href="paket.php" class="dropdown-item">My Course</a>
+																		<a class="dropdown-item" href="signout.php">Logout</a>
+																</div>
+														</div>
                         </div>
                     </nav>
                 </div>
@@ -263,12 +270,10 @@ if( isset($_SESSION["login"]) === false ) {
                                 <h2>10 Years Experience</h2>
                             </div>
                             <div class="about-text">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus. Aenean consectetur convallis porttitor. Aliquam interdum at lacus non blandit.
-                                </p>
+															<p><b>"MAHIR"</b> adalah Kursus Mengemudi yang berorientasi edukasi bagi pemula (family Driver/Level 2). Kami melatih siswa-siwa tidak hanya sekedar bisa mengemudi tapi lebi dari itu.
+															 Kami mendidik calon-calon pengemudi agar memiliki prinsip-prinsip berkesalamatan dalam berkendara, yang mampu memahami aturan-aturan lalu lintas, beretika dan punya sopan santun di jalan raya.
+														 Juga kami ajarkan dasar-dasar memahami perawatan kendaraan sebelum berkendara untuk mengurangi resiko di jalan raya. Kami juga terdaftar dan sebagai anggota <b>APMI (Asosiasi Pelatihan mengemudi Indonesia)</b>
+													 yang bertaraf Nasional. Kami juga bekerjasama dengan <b>LSK (Lembaga Sertifikasi Kompetensi)</b> untuk menguji kelulusan.</p>
                                 <a class="btn" href="">Learn More</a>
                             </div>
                         </div>
@@ -330,6 +335,37 @@ if( isset($_SESSION["login"]) === false ) {
                 </div>
             </div>
             <!-- Fact End -->
+
+						<div id="jenisPaket" class="contact wow fadeInUp">
+                <div class="container">
+                    <div class="section-header text-center">
+                        <p>Daftar Paket</p>
+                        <h2>Kursus Mengemudi Mahir</h2>
+                    </div>
+										<div id="cont">
+										    <table>
+										        <thead>
+										            <tr>
+																		<th>ID</th>
+										                <th>Jenis</th>
+										                <th>Harga</th>
+										            </tr>
+										            <?php
+										            $id = 1;
+										            $tampilkan = mysqli_query($koneksi, "SELECT * from paket_belajar");
+										            while($data = mysqli_fetch_array($tampilkan)) :
+										            ?>
+										            <tr class="isi">
+										                <td><?=$id++;?></td>
+																		<td><?=$data['jenis']?></td>
+										                <td><?=$data['harga']?></td>
+										            </tr>
+										            <?php endwhile; ?>
+										        </thead>
+										    </table>
+										</div>
+                </div>
+            </div>
 
 
             <!-- Service Start -->
@@ -834,7 +870,7 @@ if( isset($_SESSION["login"]) === false ) {
             </div> -->
             <!-- Blog End -->
             <!-- Contact Start -->
-            
+
             <!-- Contact End -->
 
 

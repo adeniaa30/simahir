@@ -34,6 +34,43 @@ if( isset($_SESSION["login"]) === true ) {
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+				<style>
+				.isi:hover{
+                background-color: violet;
+            }
+            table{
+                width: 50%;
+                border-collapse: collapse;
+                margin: auto;
+                border-radius: 15px;
+                background: rgba(0, 0, 0, 0.5);
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+                margin-bottom: 20px;
+            }
+            th {
+                background-color: cadetblue;
+								text-align: center;
+            }
+            td{
+                text-align: center;
+            }
+            th, td{
+                padding: 15px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color: white;
+            }
+            caption{
+                margin-bottom: 20px;
+                font-family: Goudy Old Style;
+                font-size: 30px;
+                color: black;
+            }
+            #cont{
+                position: relative;
+                width: 100%;
+                /* background-image: linear-gradient(to bottom right, aquamarine, pink, violet); */
+            }
+				</style>
     </head>
 
     <body>
@@ -103,13 +140,12 @@ if( isset($_SESSION["login"]) === true ) {
 
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto">
-                                <a href="index.html" class="nav-item nav-link">Home</a>
+                                <a href="index.php" class="nav-item nav-link">Home</a>
                                 <a href="#about" class="nav-item nav-link">About</a>
                                 <a href="#fact" class="nav-item nav-link">fact</a>
                                 <a href="#team" class="nav-item nav-link">Team</a>
                                 <a href="#tips" class="nav-item nav-link">Tips</a>
-                                <a href="paket.php" class="nav-item nav-link">Package</a>
-                                <a href="#contact" class="nav-item nav-link">Contact</a>
+																<a href="#jenisPaket" class="nav-item nav-link">Paket Mahir</a>
                             </div>
                             <div class="ml-auto">
                                 <a class="btn" href="registrasi/registrasi.php">Register</a>
@@ -228,12 +264,11 @@ if( isset($_SESSION["login"]) === true ) {
                                 <h2>10 Years Experience</h2>
                             </div>
                             <div class="about-text">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus. Aenean consectetur convallis porttitor. Aliquam interdum at lacus non blandit.
-                                </p>
+                                <p><b>"MAHIR"</b> adalah Kursus Mengemudi yang berorientasi edukasi bagi pemula (family Driver/Level 2). Kami melatih siswa-siwa tidak hanya sekedar bisa mengemudi tapi lebi dari itu.
+																 Kami mendidik calon-calon pengemudi agar memiliki prinsip-prinsip berkesalamatan dalam berkendara, yang mampu memahami aturan-aturan lalu lintas, beretika dan punya sopan santun di jalan raya.
+															 Juga kami ajarkan dasar-dasar memahami perawatan kendaraan sebelum berkendara untuk mengurangi resiko di jalan raya. Kami juga terdaftar dan sebagai anggota <b>APMI (Asosiasi Pelatihan mengemudi Indonesia)</b>
+														 yang bertaraf Nasional. Kami juga bekerjasama dengan <b>LSK (Lembaga Sertifikasi Kompetensi)</b> untuk menguji kelulusan.</p>
+
                                 <a class="btn" href="">Learn More</a>
                             </div>
                         </div>
@@ -295,6 +330,37 @@ if( isset($_SESSION["login"]) === true ) {
                 </div>
             </div>
             <!-- Fact End -->
+
+						<div id="jenisPaket" class="contact wow fadeInUp">
+                <div class="container">
+                    <div class="section-header text-center">
+                        <p>Daftar Paket</p>
+                        <h2>Kursus Mengemudi Mahir</h2>
+                    </div>
+										<div id="cont">
+										    <table>
+										        <thead>
+										            <tr>
+																		<th>ID</th>
+										                <th>Jenis</th>
+										                <th>Harga</th>
+										            </tr>
+										            <?php
+										            $id = 1;
+										            $tampilkan = mysqli_query($koneksi, "SELECT * from paket_belajar");
+										            while($data = mysqli_fetch_array($tampilkan)) :
+										            ?>
+										            <tr class="isi">
+										                <td><?=$id++;?></td>
+																		<td><?=$data['jenis']?></td>
+										                <td><?=$data['harga']?></td>
+										            </tr>
+										            <?php endwhile; ?>
+										        </thead>
+										    </table>
+										</div>
+                </div>
+            </div>
 
 
             <!-- Service Start -->
@@ -489,7 +555,7 @@ if( isset($_SESSION["login"]) === true ) {
                                     <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
                                     <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
                                     <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
+                                    <a class="social-in" href="https://www.instagram.com/adeniaadn/"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>

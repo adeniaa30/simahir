@@ -1,6 +1,6 @@
-<?php include 'controller/controll.php';
+<?php include '../controller/controll.php';
 if( isset($_SESSION["login"]) === false ) {
-	header("Location: index.php");
+	header("Location: admin.php");
 	exit;
 };
  ?>
@@ -23,19 +23,19 @@ if( isset($_SESSION["login"]) === false ) {
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link href="lib/slick/slick.css" rel="stylesheet">
-        <link href="lib/slick/slick-theme.css" rel="stylesheet">
+        <link href="../lib/flaticon/font/flaticon.css" rel="stylesheet">
+        <link href="../lib/animate/animate.min.css" rel="stylesheet">
+        <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="../lib/slick/slick.css" rel="stylesheet">
+        <link href="../lib/slick/slick-theme.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
+        <link href="../css/style.css" rel="stylesheet">
         <style>
-				.isi:hover{
+				/* .isi:hover{
                 background-color: violet;
-            }
+            } */
             table{
                 width: 100%;
                 border-collapse: collapse;
@@ -68,6 +68,14 @@ if( isset($_SESSION["login"]) === false ) {
                 width: 100%;
                 /* background-image: linear-gradient(to bottom right, aquamarine, pink, violet); */
             }
+						.btn{
+							border-radius: 15px;
+							border-color: black;
+							width: auto;
+						}
+						.btn:hover{
+							background-color: rgba(0, 0, 0, 0.5);
+						}
 				</style>
     </head>
 
@@ -136,22 +144,20 @@ if( isset($_SESSION["login"]) === false ) {
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
-												<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto">
-                                <a href="index.php" class="nav-item nav-link">Back to Home</a>
+                                <a href="#paket" class="nav-item nav-link">Siswa</a>
+                                <!-- <a href="#about" class="nav-item nav-link">Jadwal</a>
+                                <a href="#fact" class="nav-item nav-link">fact</a>
+                                <a href="#team" class="nav-item nav-link">Team</a>
+                                <a href="#tips" class="nav-item nav-link">Tips</a>
+                                <a href="paket.php" class="nav-item nav-link">Package</a>
+                                <a href="#contact" class="nav-item nav-link">Contact</a> -->
                             </div>
-
                             <div class="ml-auto">
                                 <a class="btn" href="registrasi/registrasi.php">Hai, <?php echo $_SESSION["username"]; ?> </a>
+                                <a class="btn" href="../signout.php">Logout</a>
                             </div>
-														<div class="nav-item dropdown">
-																<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
-																<div class="dropdown-menu">
-																		<a href="#" class="dropdown-item">My Profile</a>
-																		<a href="paket.php" class="dropdown-item">My Course</a>
-																		<a class="dropdown-item" href="signout.php">Logout</a>
-																</div>
-														</div>
                         </div>
                     </nav>
                 </div>
@@ -161,85 +167,163 @@ if( isset($_SESSION["login"]) === false ) {
             <div id="paket" class="contact wow fadeInUp">
                 <div class="container">
                     <div class="section-header text-center">
-                        <p>Detail Paket</p>
-                        <h2><?php echo $_SESSION["username"]; ?></h2>
+                        <p>List</p>
+                        <h2>Pendaftar</h2>
                     </div>
-										<form>
-											<?php
-											$id = 1;
-											$username = $_SESSION["username"];
-											$tampilkan = mysqli_query($koneksi, "SELECT email, nama, no_wa, alamat, paket, hari, jam, metode, catatan_admin from pendaftaran where username = '$username'");
-											while($data = mysqli_fetch_array($tampilkan)) :
-											?>
-											<div class="form-group row">
-                          <label class="col-sm-2 col-form-label">Email</label>
-                          <div class="col-sm-10">
-                              <input type="text" class="form-control" value="<?=@$vemailDesa?>"
-                              placeholder="<?=$data['email']?>" readonly>
-                          </div>
-                      </div>
-                      <div class="form-group row">
-                          <label class="col-sm-2 col-form-label">Nama Lengkap</label>
-                          <div class="col-sm-10">
-                              <input type="text" class="form-control" value="<?=@$vwebDesa?>"
-                              placeholder="<?=$data['nama']?>" readonly>
-                          </div>
-                      </div>
-                      <div class="form-group row">
-                          <label class="col-sm-2 col-form-label">Nomor WA</label>
-                          <div class="col-sm-10">
-                              <input type="text" class="form-control" value="<?=@$vfbDesa?>"
-                              placeholder="<?=$data['no_wa']?>" readonly>
-                          </div>
-                      </div>
-											<div class="form-group row">
-                          <label class="col-sm-2 col-form-label">Alamat</label>
-                          <div class="col-sm-10">
-                              <input type="text" class="form-control" value="<?=@$vfbDesa?>"
-                              placeholder="<?=$data['alamat']?>" readonly>
-                          </div>
-                      </div>
-											<div class="form-group row">
-                          <label class="col-sm-2 col-form-label">Paket</label>
-                          <div class="col-sm-10">
-                              <input type="text" class="form-control" value="<?=@$vfbDesa?>"
-                              placeholder="<?=$data['paket']?>" readonly>
-                          </div>
-                      </div>
-											<div class="form-group row">
-                          <label class="col-sm-2 col-form-label">Hari</label>
-                          <div class="col-sm-10">
-                              <input type="text" class="form-control" value="<?=@$vfbDesa?>"
-                              placeholder="<?=$data['hari']?>" readonly>
-                          </div>
-                      </div>
-											<div class="form-group row">
-                          <label class="col-sm-2 col-form-label">Jam</label>
-                          <div class="col-sm-10">
-                              <input type="text" class="form-control" value="<?=@$vfbDesa?>"
-                              placeholder="<?=$data['jam']?>" readonly>
-                          </div>
-                      </div>
-											<div class="form-group row">
-                          <label class="col-sm-2 col-form-label">Metode Pembayaran</label>
-                          <div class="col-sm-10">
-                              <input type="text" class="form-control" value="<?=@$vfbDesa?>"
-                              placeholder="<?=$data['metode']?>" readonly>
-                          </div>
-                      </div>
-											<div class="form-group row">
-                          <label class="col-sm-2 col-form-label">Catatan Admin</label>
-                          <div class="col-sm-10">
-                              <input type="text" class="form-control" value="<?=@$vfbDesa?>"
-                              placeholder="<?=$data['catatan_admin']?>" readonly>
-                          </div>
-                      </div>
-											<?php endwhile; ?>
-										</form>
+										<div id="cont">
+										    <table>
+										        <thead>
+										            <tr>
+																		<th>ID</th>
+																		<th>Username</th>
+										                <th>Email</th>
+										                <th>Nama</th>
+										                <th>No WA</th>
+										                <th>Alamat</th>
+										                <th>Paket</th>
+																		<th>Hari</th>
+																		<th>Jam</th>
+																		<th>Metode Bayar</th>
+																		<th>Catatan Siswa</th>
+																		<th>Catatan Admin</th>
+																		<th>Aksi</th>
+										            </tr>
+										            <?php
+										            $id = 1;
+										            $tampilkan = mysqli_query($koneksi, "SELECT * from pendaftaran");
+										            while($data = mysqli_fetch_array($tampilkan)) :
+										            ?>
+										            <tr class="isi">
+										                <td><?=$id++;?></td>
+																		<td><?=$data['username']?></td>
+										                <td><?=$data['email']?></td>
+																		<td><?=$data['nama']?></td>
+										                <td><?=$data['no_wa']?></td>
+										                <td><?=$data['alamat']?></td>
+										                <td><?=$data['paket']?></td>
+																		<td><?=$data['hari']?></td>
+																		<td><?=$data['jam']?></td>
+																		<td><?=$data['metode']?></td>
+																		<td><?=$data['catatan']?></td>
+																		<td><?=$data['catatan_admin']?></td>
+																		<td>
+														    			<a href="admin.php?hal=edit&email=<?=$data['email']?>" class="btn btn-warning"> Edit </a>
+														    			<a href="admin.php?hal=hapus&email=<?=$data['email']?>"
+														    			   onclick="return confirm('Apakah yakin ingin menghapus data ini?')" class="btn btn-danger"> Hapus </a>
+														    		</td>
+																		<!-- <td>  <select name="keterangan" class="form-control" value="" >
+																				<option value="">Keterangan</option>
+																				<option value="LUNAS">LUNAS</option>
+																				<option value="BELUM LUNAS">BELUM LUNAS</option>
+																		</select></td> -->
+										            </tr>
+										            <?php endwhile; ?>
+
+										        </thead>
+										    </table>
+										</div>
 
                 </div>
             </div>
             <!-- Contact End -->
+
+			<div id="contact" class="contact wow fadeInUp">
+					<div class="container">
+						<div class="section-header text-center">
+								<p>Form Edit</p>
+								<h2>Admin</h2>
+						</div>
+						<div>
+							<form action="" method="POST">
+								<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Username</label>
+										<div class="col-sm-10">
+												<input type="text" class="form-control" value="<?=@$vuser?>"
+												placeholder="Username" readonly>
+										</div>
+								</div>
+								<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Email</label>
+										<div class="col-sm-10">
+												<input type="text" name="email" class="form-control" value="<?=@$vemail?>"
+												placeholder="Email" readonly>
+										</div>
+								</div>
+								<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Nama Lengkap</label>
+										<div class="col-sm-10">
+												<input type="text" name="namaLengkap" class="form-control" value="<?=@$vname?>"
+												placeholder="Nama Lengkap" readonly>
+										</div>
+								</div>
+								<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Nomor WA</label>
+										<div class="col-sm-10">
+												<input type="text" name="no_wa" class="form-control" value="<?=@$vnoWA?>"
+												placeholder="Nomor WA" readonly>
+										</div>
+								</div>
+								<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Alamat</label>
+										<div class="col-sm-10">
+												<input type="text" name="alamat" class="form-control" value="<?=@$valamat?>"
+												placeholder="Alamat" readonly>
+										</div>
+								</div>
+								<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Paket</label>
+										<div class="col-sm-10">
+												<input type="text" name="pilPaket" class="form-control" value="<?=@$vpaket?>"
+												placeholder="Paket" >
+										</div>
+								</div>
+								<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Hari</label>
+										<div class="col-sm-10">
+												<input type="text" name="hari" class="form-control" value="<?=@$vhari?>"
+												placeholder="Hari" >
+										</div>
+								</div>
+								<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Jam</label>
+										<div class="col-sm-10">
+												<input type="text" name="jam" class="form-control" value="<?=@$vjam?>"
+												placeholder="Jam">
+										</div>
+								</div>
+								<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Metode Pembayaran</label>
+										<div class="col-sm-10">
+												<input type="text" name="metodeBayar" class="form-control" value="<?=@$vbayar?>"
+												placeholder="Metode Pembayaran" readonly>
+										</div>
+								</div>
+								<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Catatan Siswa</label>
+										<div class="col-sm-10">
+												<input type="text" name="catatan" class="form-control" value="<?=@$vcatatan?>"
+												placeholder="Catatan Siswa" readonly>
+										</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-2 col-form-label">Catatan Admin</label>
+									<div class="col-sm-10">
+										<select name="keterangan" class="form-control" >
+												<option value="<?=@$vcat_admin?>" ><?=@$vcat_admin?></option>
+												<option value="LUNAS">LUNAS</option>
+												<option value="BELUM LUNAS">BELUM LUNAS</option>
+										</select>
+									</div>
+								</div>
+								<div>
+									<br>
+										<button class="btn" type="submit" name="simpan2" id="sendMessageButton">Submit</button>
+								</div>
+							</form>
+						</div>
+						
+					</div>
+				</div>
 
 
             <!-- Footer Start -->
@@ -323,17 +407,17 @@ if( isset($_SESSION["login"]) === false ) {
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/wow/wow.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/isotope/isotope.pkgd.min.js"></script>
-        <script src="lib/lightbox/js/lightbox.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/counterup/counterup.min.js"></script>
-        <script src="lib/slick/slick.min.js"></script>
+        <script src="../lib/easing/easing.min.js"></script>
+        <script src="../lib/wow/wow.min.js"></script>
+        <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="../lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="../lib/lightbox/js/lightbox.min.js"></script>
+        <script src="../lib/waypoints/waypoints.min.js"></script>
+        <script src="../lib/counterup/counterup.min.js"></script>
+        <script src="../lib/slick/slick.min.js"></script>
 
 
         <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+        <script src="../js/main.js"></script>
     </body>
 </html>

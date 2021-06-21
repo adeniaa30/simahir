@@ -101,18 +101,19 @@ if( isset($_SESSION["login"]) === false ) {
 
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto">
-                                <a href="afterLogin.php" class="nav-item nav-link">Home</a>
-                                <a href="#about" class="nav-item nav-link">About</a>
-                                <a href="#fact" class="nav-item nav-link">fact</a>
-                                <a href="#team" class="nav-item nav-link">Team</a>
-                                <a href="#tips" class="nav-item nav-link">Tips</a>
-                                <a href="paket.php" class="nav-item nav-link">Package</a>
-                                <a href="#contact" class="nav-item nav-link">Contact</a>
+                                <a href="afterLogin.php" class="nav-item nav-link">Back to Home</a>
                             </div>
                             <div class="ml-auto">
                                 <a class="btn" href="registrasi/registrasi.php">Hai, <?php echo $_SESSION["username"]; ?> </a>
-                                <a class="btn" href="signout.php">Logout</a>
                             </div>
+														<div class="nav-item dropdown">
+																<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
+																<div class="dropdown-menu">
+																		<a href="#" class="dropdown-item">My Profile</a>
+																		<a href="paket.php" class="dropdown-item">My Course</a>
+																		<a class="dropdown-item" href="signout.php">Logout</a>
+																</div>
+														</div>
                         </div>
                     </nav>
                 </div>
@@ -130,6 +131,10 @@ if( isset($_SESSION["login"]) === false ) {
                           <div class="contact-form">
                               <div id="success"></div>
                               <form name="sentMessage" id="contactForm" novalidate="novalidate" action="" method="POST">
+																	<div class="control-group">
+																			<input type="text" class="form-control" name="username2" id="name" placeholder="<?php echo $_SESSION["username"];?>" required="required" data-validation-required-message="Masukkan Username" value="<?=@$vuser?>" readonly/>
+																			<p class="help-block text-danger"></p>
+																	</div>
                                   <div class="control-group">
                                       <input type="text" class="form-control" name="email" id="name" placeholder="Email" required="required" data-validation-required-message="Masukkan Email" value="<?=@$vname?>" />
                                       <p class="help-block text-danger"></p>
@@ -143,7 +148,7 @@ if( isset($_SESSION["login"]) === false ) {
                                       <p class="help-block text-danger"></p>
                                   </div>
                                   <div class="control-group">
-                                      <textarea class="form-control" name="alamat" id="message" placeholder="Alamat" required="required" data-validation-required-message="Masukkan Alamat" value="<?=@$valamat?>"></textarea>
+                                      <input type="text" class="form-control" name="alamat" id="message" placeholder="Alamat" required="required" data-validation-required-message="Masukkan Alamat" value="<?=@$valamat?>">
                                       <p class="help-block text-danger"></p>
                                   </div>
 
@@ -206,7 +211,7 @@ if( isset($_SESSION["login"]) === false ) {
                                         <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="control-group">
-                                        <textarea class="form-control" name="catatan" value="<?=@$vcatatan?>" id="catatan" placeholder="catatan" required="required" data-validation-required-message="Silahkan tulis catatan tambahan jika ada"></textarea>
+                                        <input type="text" class="form-control" name="catatan" value="<?=@$vcatatan?>" id="catatan" placeholder="catatan" required="required" data-validation-required-message="Silahkan tulis catatan tambahan jika ada">
                                         <p class="help-block text-danger"></p>
                                     </div>
                                     <div>
