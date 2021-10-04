@@ -147,7 +147,7 @@ if( isset($_SESSION["login"]) === false ) {
                             </div>
 
                             <div class="ml-auto">
-                                <a class="btn" href="registrasi/registrasi.php">Hai, <?php echo $_SESSION["username"]; ?> </a>
+                                <a class="btn" href="#">Hai, <?php echo $_SESSION["username"]; ?> </a>
                             </div>
 														<div class="nav-item dropdown">
 																<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
