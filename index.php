@@ -147,7 +147,7 @@ if( isset($_SESSION["login"]) === true ) {
                                 <a href="#tips" class="nav-item nav-link">Tips</a>
 																<a href="#jenisPaket" class="nav-item nav-link">Paket Mahir</a>
                             </div>
-                            <div class="ml-auto">
+                            <div class="ml-auto" id="navbarCollapse">
                                 <a class="btn" href="registrasi/registrasi.php">Register</a>
                                 <a class="btn" href="login/login.php">Login</a>
                             </div>
@@ -930,7 +930,7 @@ if( isset($_SESSION["login"]) === true ) {
 
 
             <!-- Footer Start -->
-            <div class="footer wow fadeIn" data-wow-delay="0.3s">
+						<div class="footer wow fadeIn" data-wow-delay="0.3s">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-lg-3">
@@ -948,7 +948,7 @@ if( isset($_SESSION["login"]) === true ) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
+                        <!-- <div class="col-md-6 col-lg-3">
                             <div class="footer-link">
                                 <h2>Services Areas</h2>
                                 <a href="">Building Construction</a>
@@ -957,22 +957,22 @@ if( isset($_SESSION["login"]) === true ) {
                                 <a href="">Interior Design</a>
                                 <a href="">Painting</a>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6 col-lg-3">
                             <div class="footer-link">
                                 <h2>Useful Pages</h2>
-                                <a href="">About Us</a>
-                                <a href="">Contact Us</a>
-                                <a href="">Our Team</a>
-                                <a href="">Projects</a>
-                                <a href="">Testimonial</a>
+                                <a href="">Home</a>
+                                <a href="">About</a>
+                                <a href="">Fact</a>
+                                <a href="">Team</a>
+                                <a href="">Contact</a>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="newsletter">
-                                <h2>Newsletter</h2>
+                                <h2>Subscribe</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu
+                                    Tinggalkan email anda di sini untuk mendapatkan informasi menarik !
                                 </p>
                                 <div class="form">
                                     <input class="form-control" placeholder="Email here">
